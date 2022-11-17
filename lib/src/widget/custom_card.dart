@@ -34,7 +34,10 @@ class CustomCard extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft:Radius.circular(rgPadding) ,bottomLeft:Radius.circular(rgPadding) ),  color: color1),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(rgPadding),
+                      bottomLeft: Radius.circular(rgPadding)),
+                  color: color1),
               child: Stack(
                 children: [
                   Positioned(
@@ -76,15 +79,8 @@ class CustomCard extends StatelessWidget {
                 bottomLeft: Radius.circular(40),
               ),
               child: CachedNetworkImage(
-              imageUrl:iconPath,
+                imageUrl: iconPath,
                 fit: BoxFit.cover,
-                // placeholder: (context, url) => Center(
-                //   child: SizedBox(
-                //     width: 40.0,
-                //     height: 40.0,
-                //     child: CupertinoActivityIndicator(),
-                //   ),
-                // ),
               ),
             ),
           ),

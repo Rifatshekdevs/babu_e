@@ -15,9 +15,10 @@ class PasswordPage extends StatefulWidget {
 }
 
 class _PasswordPageState extends State<PasswordPage> {
-
-  final authC= Get.put(AuthController(),permanent: true);
-    GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final authC = Get.put(
+    AuthController(),
+  );
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +42,13 @@ class _PasswordPageState extends State<PasswordPage> {
             Spacer(
               flex: flex1,
             ),
-            Image.asset('assets/images/password.png',height: respectiveHeight(size, 200),),
-            Spacer(flex: 1,),
+            Image.asset(
+              'assets/images/password.png',
+              height: respectiveHeight(size, 200),
+            ),
+            Spacer(
+              flex: 1,
+            ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextFormField(
@@ -104,7 +110,7 @@ class _PasswordPageState extends State<PasswordPage> {
                   "Next",
                 ),
                 onPressed: () {
-                 Get.to(RegisterCompletePage());
+                  Get.to(RegisterCompletePage());
                 },
               ),
             ),

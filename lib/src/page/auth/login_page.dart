@@ -1,4 +1,3 @@
-
 import 'package:agora_test/src/config/constants.dart';
 import 'package:agora_test/src/api/base_controller.dart';
 import 'package:agora_test/src/page/auth/forget_password.dart';
@@ -183,8 +182,8 @@ class _LoginPageState extends State<LoginPage> with BaseController {
                         ),
                         backgroundColor:
                             getColor(Color(0xFFeff3f6), HexColor('#A092DB')),
-                        side: getBorder(
-                            HexColor('#89B0FF'), Colors.transparent),
+                        side:
+                            getBorder(HexColor('#89B0FF'), Colors.transparent),
                         shape: MaterialStateProperty.all(StadiumBorder()),
                         fixedSize: MaterialStateProperty.all(
                             Size(size.width * 0.90, 50)),

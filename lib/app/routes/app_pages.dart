@@ -42,10 +42,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SORBORNO,
-      page: () => SorbornoView(
-        id: 'Unknown',
-        subcategoryModel: SubcategoryModel(),
-      ),
+      page: () => SorbornoView(),
       binding: SorbornoBinding(),
     ),
     GetPage(
@@ -58,7 +55,10 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.GRID,
-      page: () =>  GridPlaygroundView(id: 'Unknown', subcategoryModel: SubcategoryModel(),),
+      page: () => GridPlaygroundView(
+        id: 'Unknown',
+        subcategoryModel: SubcategoryModel(),
+      ),
       binding: GridPlaygroundBinding(),
     ),
   ];

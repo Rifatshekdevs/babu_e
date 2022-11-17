@@ -19,7 +19,7 @@ class PhoneNumberPage extends StatefulWidget {
 
 class _PhoneNumberPageState extends State<PhoneNumberPage> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-        final authC = Get.put(AuthController(), permanent: true);
+  final authC = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,9 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
         key: _formKey,
         child: Column(
           children: [
-            Spacer(flex: 1,),
+            Spacer(
+              flex: 1,
+            ),
             Text(
               "Give your phone number",
             ),
@@ -45,17 +47,19 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
               'assets/images/phone.png',
               height: respectiveHeight(size, 200),
             ),
-            Spacer(flex: 1,),
+            Spacer(
+              flex: 1,
+            ),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextFormField(
                 onChanged: authC.phone,
                 inputFormatters: [
                   ValidatorInputFormatter(
-                      editingValidator: EmailEditingRegexValidator(
-                          regexSource: r'(^(?:[+0]9)?[0-9]{0,11}$)',
-                          ),
-                          ),
+                    editingValidator: EmailEditingRegexValidator(
+                      regexSource: r'(^(?:[+0]9)?[0-9]{0,11}$)',
+                    ),
+                  ),
                 ],
                 validator: (value) {
                   String pattern = r'(^(?:[+0]9)?[0-9]{0,11}$)';

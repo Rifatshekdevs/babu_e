@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:agora_test/src/api_caching/api_cache.dart';
 import 'package:agora_test/src/model/study_Model.dart';
+import 'package:agora_test/src/model/subcategory.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
@@ -9,11 +10,12 @@ import 'package:just_audio/just_audio.dart';
 import '../../../../src/api/api_url.dart';
 
 class BanjonbornoController extends GetxController {
-  
+  var argument = Get.arguments;
   @override
   void onInit() {
     super.onInit();
-    
+    SubcategoryModel subcategoryModel = argument[0];
+    getBanjonborno(subcategoryModel.sId ?? '');
   }
 
   final _audioPlayer = AudioPlayer();

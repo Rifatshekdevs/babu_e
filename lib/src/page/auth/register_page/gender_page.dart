@@ -17,7 +17,9 @@ class GenderPage extends StatefulWidget {
 }
 
 class _GenderPageState extends State<GenderPage> {
-  final authC = Get.put(AuthController(), permanent: true);
+  final authC = Get.put(
+    AuthController(),
+  );
 
   @override
   Widget build(BuildContext context) {

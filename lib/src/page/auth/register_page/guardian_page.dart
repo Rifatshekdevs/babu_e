@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
-
 import 'package:agora_test/src/config/constants.dart';
 import 'package:agora_test/src/api/auth_controller.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +16,12 @@ class GuardianPage extends StatefulWidget {
 }
 
 class _GuardianPageState extends State<GuardianPage> {
-          final authC = Get.put(AuthController(), permanent: true);
+  final authC = Get.put(
+    AuthController(),
+  );
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
- List<String> items = [
+  List<String> items = [
     "Day",
     "Night",
   ];
@@ -54,7 +55,7 @@ class _GuardianPageState extends State<GuardianPage> {
             ),
             Guardian(
               guardianName: "Father",
-              switchValue: authC.guardian.value=='Father',
+              switchValue: authC.guardian.value == 'Father',
               onChanged: (b) {
                 if (b) {
                   setState(() {
@@ -124,7 +125,7 @@ class _GuardianPageState extends State<GuardianPage> {
             ),
             if (authC.guardian.value == "Others")
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 30),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   onChanged: authC.guardian,
                   decoration: InputDecoration(
@@ -138,14 +139,14 @@ class _GuardianPageState extends State<GuardianPage> {
                         width: 2,
                       ),
                     ),
-                    enabledBorder:  OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(
                         color: Colors.grey,
                         width: 2,
                       ),
                     ),
-                    focusedBorder:  OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(
                         color: Color(0xFFa4a3ef),
@@ -158,28 +159,28 @@ class _GuardianPageState extends State<GuardianPage> {
             Spacer(
               flex: flex4,
             ),
-             Center(
-                child: OutlinedButton(
-                  style: ButtonStyle(
-                    foregroundColor: getColor(
-                      HexColor('#A092DB'),
-                      Color(0xFFeff3f6),
-                    ),
-                    backgroundColor:
-                        getColor(Color(0xFFeff3f6), HexColor('#A092DB')),
-                    side: getBorder(HexColor('#89B0FF'), Colors.transparent),
-                    shape: MaterialStateProperty.all(StadiumBorder()),
-                    fixedSize:
-                        MaterialStateProperty.all(Size(size.width * 0.90, 50)),
+            Center(
+              child: OutlinedButton(
+                style: ButtonStyle(
+                  foregroundColor: getColor(
+                    HexColor('#A092DB'),
+                    Color(0xFFeff3f6),
                   ),
-                  child: Text(
-                    "Next",
-                  ),
-                  onPressed: () {
-                  widget.nextPage();
-                  },
+                  backgroundColor:
+                      getColor(Color(0xFFeff3f6), HexColor('#A092DB')),
+                  side: getBorder(HexColor('#89B0FF'), Colors.transparent),
+                  shape: MaterialStateProperty.all(StadiumBorder()),
+                  fixedSize:
+                      MaterialStateProperty.all(Size(size.width * 0.90, 50)),
                 ),
+                child: Text(
+                  "Next",
+                ),
+                onPressed: () {
+                  widget.nextPage();
+                },
               ),
+            ),
             Container(),
             SizedBox(
               height: respectiveHeight(size, 50),
@@ -190,7 +191,6 @@ class _GuardianPageState extends State<GuardianPage> {
     );
   }
 }
-
 
 class Guardian extends StatelessWidget {
   final String guardianName;

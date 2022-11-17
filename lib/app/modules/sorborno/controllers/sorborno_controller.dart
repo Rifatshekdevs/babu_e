@@ -2,24 +2,27 @@ import 'dart:convert';
 import 'package:agora_test/src/api_caching/api_cache.dart';
 import 'package:agora_test/src/api/api_url.dart';
 import 'package:agora_test/src/model/study_Model.dart';
+import 'package:agora_test/src/model/subcategory.dart';
+import 'package:agora_test/src/utils/loader.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 
 class SorbornoController extends GetxController {
-   final _dio = Dio();
+  final _dio = Dio();
   final study2 = RxList<StudyModel>();
   final selectedborno = Rxn<Widget>();
   final _audioPlayer = AudioPlayer();
 
- 
-
-  // var timer;
+  var argument = Get.arguments;
   @override
   void onInit() {
     super.onInit();
+    SubcategoryModel subcategoryModel = argument[0];
+    getSorborno(subcategoryModel.sId ?? '');
   }
+
   // time(){
   //   timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
   //     print('hi!!!!!!!!!!');
@@ -27,8 +30,7 @@ class SorbornoController extends GetxController {
   //     update();
   //   });
   // }
-   int distance = 157;
-
+  int distance = 157;
 
   @override
   void onClose() {
@@ -51,6 +53,7 @@ class SorbornoController extends GetxController {
   getSorborno(String cId) async {
     try {
       String localStorage = ApiCaching().getFromLocal(ApiUrl.study + cId);
+      mmm(localStorage);
       if (localStorage != '') {
         List<dynamic> body = jsonDecode(localStorage);
         var list = body.map((e) => StudyModel.fromJson(e));
@@ -62,7 +65,6 @@ class SorbornoController extends GetxController {
         List<dynamic> body = response.data;
         var list = body.map((e) => StudyModel.fromJson(e));
         study2.assignAll(list);
-        update();
       }
     } on DioError catch (e) {
       DioError error = e;
@@ -1807,4 +1809,3 @@ List<Offset> road = [
   const Offset(41.87999850346452, 648),
   const Offset(40.94185779293972, 649),
 ];
-

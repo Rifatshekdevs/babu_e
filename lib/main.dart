@@ -11,23 +11,23 @@ import 'package:get_storage/get_storage.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 void main() async {
-WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   runApp(
-     GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: kThemedata,
-          smartManagement: SmartManagement.onlyBuilder,
-          home:LocalStorage.isLoggedIn() ? DrawerWidget() : WelcomeScreen(),
-          initialRoute: AppPages.INITIAL,
-          getPages: AppPages.routes,
-        ),
+    GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: kThemedata,
+      home: LocalStorage.isLoggedIn() ? DrawerWidget() : WelcomeScreen(),
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+    ),
   );
   AndroidInitializationSettings androidInitializationSettings =
       AndroidInitializationSettings('@mipmap/ic_launcher');
-  InitializationSettings initializationSettings =
-      InitializationSettings(android: androidInitializationSettings);
+  InitializationSettings initializationSettings = InitializationSettings(
+      android: androidInitializationSettings,
+      iOS: DarwinInitializationSettings());
+
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onDidReceiveNotificationResponse: (payload) async {
-  });
+      onDidReceiveNotificationResponse: (payload) async {});
 }

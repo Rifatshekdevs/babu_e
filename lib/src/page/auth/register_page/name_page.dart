@@ -23,7 +23,9 @@ class NamePage extends StatefulWidget {
 class _NamePageState extends State<NamePage>
     with SingleTickerProviderStateMixin {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final authC = Get.put(AuthController(), permanent: true);
+  final authC = Get.put(
+    AuthController(),
+  );
 
   // XFile? _image;
   // getImage() async {
@@ -113,8 +115,7 @@ class _NamePageState extends State<NamePage>
                         backgroundColor: Colors.white,
                         child: CircleAvatar(
                           radius: 75,
-                          backgroundImage:
-                              NetworkImage(placeHolderImage),
+                          backgroundImage: NetworkImage(placeHolderImage),
                         ),
                       ),
                     ),

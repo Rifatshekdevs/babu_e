@@ -2,6 +2,7 @@ import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/config/ktext.dart';
 import 'package:agora_test/src/api/slider_controller.dart';
 import 'package:agora_test/src/utils/constrants.dart';
+import 'package:agora_test/src/utils/loader.dart';
 import 'package:agora_test/src/widget/custom_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,10 @@ class CategoryView extends GetView<CategoryController> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    Get.put(CategoryController());
+
     return Obx(
       () => controller.category.isEmpty
-          ? CircularProgressIndicator()
+          ? Center(child: CircularProgressIndicator())
           : Scaffold(
               backgroundColor: Colors.white,
               body: SafeArea(
@@ -128,7 +129,7 @@ class CategoryView extends GetView<CategoryController> {
                                               borderRadius:
                                                   BorderRadius.circular(50),
                                               child: CachedNetworkImage(
-                                             imageUrl: pList
+                                                imageUrl: pList
                                                     .subcategory!.frontImage
                                                     .toString(),
                                                 fit: BoxFit.cover,
@@ -158,14 +159,9 @@ class CategoryView extends GetView<CategoryController> {
                               ),
                               child: GestureDetector(
                                 onTap: () {
-                                  print(categoryList.sId);
-                                  // Get.to(
-                                  //   SubPage(
-                                  //     id: categoryList.sId.toString(),
-                                  //   ),
-                                  // );
                                   Get.toNamed(Routes.SUBCATEGORY,
-                                      arguments: [categoryList.sId.toString()]);
+                                      arguments: [categoryList.sId.toString()],
+                                      preventDuplicates: false);
                                 },
                                 child: CustomCard(
                                   color: HexColor('#E2F9FE').withOpacity(.3),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/api/local_cash_controller.dart';
 import 'package:agora_test/src/model/subcategory.dart';
 import 'package:dio/dio.dart';
@@ -12,7 +13,7 @@ import '../../../../src/utils/loader.dart';
 import '../../banjonborno/controllers/banjonborno_controller.dart';
 
 class SubcategoryController extends GetxController {
-   GlobalKey<ScaffoldState> key = GlobalKey();
+  GlobalKey<ScaffoldState> key = GlobalKey();
   List<AnimationController> controllers = [];
 
   final _dio = Dio();
@@ -21,10 +22,12 @@ class SubcategoryController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    mmm('onInit');
+    mmm(arguments[0]);
     getSubCategory(arguments[0]);
     getMcq();
     getMcqAdvanced();
-    Get.put(BanjonbornoController());
+    // Get.put(BanjonbornoController());
   }
 
   final subCategoryT = RxList<SubcategoryModel>();
@@ -79,6 +82,17 @@ class SubcategoryController extends GetxController {
       ApiCaching().saveToLocal(ApiUrl.advanceMcq, jsonEncode(response.data));
     } catch (e) {
       print(e);
+    }
+  }
+
+  void gotoPage(SubcategoryModel subItem) {
+    if (subItem.layout == 'vowel') {
+      Get.toNamed(Routes.SORBORNO, arguments: [subItem]);
+      return;
+    }
+    if (subItem.layout == 'consonant') {
+      Get.toNamed(Routes.BANJONBORNO, arguments: [subItem]);
+      return;
     }
   }
 }
