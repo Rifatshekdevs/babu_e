@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'package:agora_test/src/api_caching/api_cache.dart';
 import 'package:agora_test/src/api/api_url.dart';
@@ -11,30 +10,29 @@ import 'package:just_audio/just_audio.dart';
 class SorbornoController extends GetxController {
    final _dio = Dio();
   final study2 = RxList<StudyModel>();
-  var selectedborno = Rxn<Widget>();
+  final selectedborno = Rxn<Widget>();
   final _audioPlayer = AudioPlayer();
 
  
 
-  var timer;
+  // var timer;
   @override
   void onInit() {
     super.onInit();
-    time();
   }
-  time(){
-    timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
-      print('hi!!!!!!!!!!');
-      runner(road);
-      update();
-    });
-  }
+  // time(){
+  //   timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
+  //     print('hi!!!!!!!!!!');
+  //     runner(road);
+  //     update();
+  //   });
+  // }
    int distance = 157;
 
 
   @override
   void onClose() {
-    timer.cancle();
+    // timer.cancle();
     _audioPlayer.dispose();
     super.onClose();
   }

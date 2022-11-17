@@ -1,7 +1,4 @@
 // ignore_for_file: unused_local_variable
-
-import 'dart:async';
-
 import 'package:agora_test/src/config/ktext.dart';
 import 'package:agora_test/src/model/subcategory.dart';
 import 'package:agora_test/src/utils/constrants.dart';
@@ -18,16 +15,11 @@ class SorbornoView extends GetView<SorbornoController> {
   Widget build(BuildContext context) {
     Get.put(SorbornoController());
     controller.getSorborno(id);
-
-    return LayoutBuilder(builder: (context, constraints) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
       double height = constraints.maxHeight;
       double  width = constraints.maxWidth;
-        final timer;
-        timer = Timer.periodic(Duration(milliseconds: 100), (Timer t) {
-        runner(road);
-    });
-        int distance = 157;
-
+ 
       controller.selectedborno.value??= CachedNetworkImage(imageUrl: controller.study2.first.image,height: 120 * height / 703,
             width: 120 * height / 703,);
       controller.play(controller.study2.first.audio);
