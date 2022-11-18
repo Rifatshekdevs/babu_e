@@ -1,6 +1,5 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, invalid_use_of_protected_member
 import 'package:agora_test/src/config/ktext.dart';
-import 'package:agora_test/src/model/subcategory.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

@@ -1,27 +1,22 @@
+import 'package:agora_test/app/modules/gridplayground/views/griddetails_view.dart';
 import 'package:agora_test/src/config/constants.dart';
 import 'package:agora_test/src/config/ktext.dart';
-import 'package:agora_test/src/model/subcategory.dart';
 import 'package:agora_test/src/page/grid_view/grid_view_card.dart';
-import 'package:agora_test/src/page/grid_view/grid_view_object_details_page.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/grid_controller.dart';
 class GridPlaygroundView extends GetView<GridPlaygroundController> {
-  final String id;
-  final SubcategoryModel subcategoryModel;
-  GridPlaygroundView({required this.id, required this.subcategoryModel});
+  GridPlaygroundView({Key? key}):super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(GridPlaygroundController());
-    controller.getGrid(id);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 252, 244, 243),
       appBar: AppBar(
           title: KText(
-            text: subcategoryModel.name.toString(),
+            text: '',
             fontFamily: kFontFamily,
             fontSize: 24,
             color: Colors.white,
@@ -37,7 +32,8 @@ class GridPlaygroundView extends GetView<GridPlaygroundController> {
             ),
           ),
           elevation: 0,
-          backgroundColor: colorDarkPurple),
+          backgroundColor: colorDarkPurple
+          ),
       body: SafeArea(child: LayoutBuilder(
         builder: (context, contraints) {
           return Column(
@@ -70,7 +66,7 @@ class GridPlaygroundView extends GetView<GridPlaygroundController> {
                               }
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return GridViewObjectsDetailsPage(
+                                return GriddetailsView(
                                   path: object.image.toString(),
                                   tag: object.image.toString(),
                                   title: object.name.toString(),

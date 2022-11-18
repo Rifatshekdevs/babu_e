@@ -2,14 +2,11 @@ import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/config/ktext.dart';
 import 'package:agora_test/src/api/slider_controller.dart';
 import 'package:agora_test/src/utils/constrants.dart';
-import 'package:agora_test/src/utils/loader.dart';
 import 'package:agora_test/src/widget/custom_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-
 import '../../../../src/config/constants.dart';
 import '../../../../src/drawer/menu_widget.dart';
 import '../controllers/category_controller.dart';

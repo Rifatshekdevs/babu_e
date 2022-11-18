@@ -1,30 +1,25 @@
+// ignore_for_file: invalid_use_of_protected_member
 import 'package:agora_test/src/animation/animating_bottom_to_up.dart';
 import 'package:agora_test/src/config/ktext.dart';
-import 'package:agora_test/src/model/subcategory.dart';
 import 'package:agora_test/src/page/playground/number_play_ground.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/number_controller.dart';
 
 class NumberView extends GetView<NumberController> {
-  final String id;
-  NumberView({required this.id, required SubcategoryModel subcategoryModel});
+    NumberView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(NumberController());
-    controller.getNumber(id);
     return LayoutBuilder(builder: (context, constraints) {
-              var width = constraints.maxWidth;
-              controller.presentWidget.value ??= CachedNetworkImage(
-                imageUrl: controller.study3.first.image.toString(),
-                width: width / 1.5,
-              );
-              controller.play(controller.study3.first.audio);
-              return Obx(()=> Scaffold(
+           var width = constraints.maxWidth;
+              // controller.presentWidget.value ??= CachedNetworkImage(
+              //   imageUrl: controller.study3.first.image.toString(),
+              //   width: width / 1.5,
+              // );
+              // controller.play(controller.study3.first.audio);
+              return Scaffold(
                 backgroundColor: Color.fromARGB(255, 252, 244, 243),
                 appBar: AppBar(
                     title: KText(
@@ -47,7 +42,9 @@ class NumberView extends GetView<NumberController> {
                     backgroundColor: colorDarkPurple
                     ),
                 extendBodyBehindAppBar: true,
-                body: SafeArea(
+                body:Obx(()=> controller.study3.value.length==0? 
+                Center(child: CircularProgressIndicator(),):
+                 SafeArea(
                     child: Column(
                   children: [
                     Expanded(
@@ -85,10 +82,10 @@ class NumberView extends GetView<NumberController> {
                       height: 10,
                     )
                   ],
-                )),
-              ),
-              );
-            });
-    
+                ),
+                ),
+                ),
+              );  
+    });
   }
 }

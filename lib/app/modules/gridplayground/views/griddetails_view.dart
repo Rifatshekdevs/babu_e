@@ -1,4 +1,3 @@
-
 import 'package:agora_test/src/config/constants.dart';
 import 'package:agora_test/src/config/ktext.dart';
 import 'package:agora_test/src/model/study_Model.dart';
@@ -6,10 +5,11 @@ import 'package:agora_test/src/model/subcategory.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:just_audio/just_audio.dart';
 
-class GridViewObjectsDetailsPage extends StatefulWidget {
+import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
+
+class GriddetailsView extends GetView {
   final int objectIndex;
   final String tag;
   final String path;
@@ -19,58 +19,15 @@ class GridViewObjectsDetailsPage extends StatefulWidget {
   final String audioPath;
   final SubcategoryModel? subcategoryModel;
 
-  GridViewObjectsDetailsPage(
-      {required this.tag,
-      required this.path,
-      required this.title,
-      required this.subtitle,
-      required this.objects,
-      required this.objectIndex,
-      required this.audioPath,
-      this.subcategoryModel});
-
-  @override
-  State<GridViewObjectsDetailsPage> createState() =>
-      _GridViewObjectsDetailsPageState();
-}
-
-class _GridViewObjectsDetailsPageState
-    extends State<GridViewObjectsDetailsPage> {
-  final _audioPlayer = AudioPlayer();
-  @override
-  void initState() {
-    super.initState();
-    print(widget.audioPath);
-    _playAudio(widget.audioPath);
-  }
-
-  @override
-  void dispose() {
-    _audioPlayer.dispose();
-    super.dispose();
-  }
-
-  Future _playAudio(String path) async {
-    try {
-      await _audioPlayer.setUrl(path);
-      await _audioPlayer.play();
-      await _audioPlayer.setVolume(1.5);
-      await _audioPlayer.stop();
-    } catch (e) {
-      print("Error loading audio source: $e");
-    }
-  }
-
+  const GriddetailsView({Key? key,required this.objectIndex, required this.tag, required this.path, required this.title, required this.subtitle, required this.objects, required this.audioPath, this.subcategoryModel,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    // print(objects.length);
-    // print(objectIndex);
-    // print(objectIndex / objects.length);
+        Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Color(0xFFeef2f5),
       appBar: AppBar(
-          title: KText(text: widget.title),
+          title: KText(text: title.toUpperCase()),
           centerTitle: true,
           iconTheme: IconThemeData(
             color: colorWhite,
@@ -99,13 +56,13 @@ class _GridViewObjectsDetailsPageState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          widget.title.capitalize(),
+                          title.toUpperCase(),
                           style: TextStyle(
                               fontSize: respectiveHeight(size, 24),
                               fontFamily: sFontFamily),
                         ),
                         Text(
-                          "${widget.objectIndex + 1} / ${widget.objects.length}",
+                          "${objectIndex + 1} / ${objects.length}",
                           style: TextStyle(
                               fontSize: respectiveHeight(size, 24),
                               fontFamily: sFontFamily),
@@ -117,8 +74,8 @@ class _GridViewObjectsDetailsPageState
                     ),
                     CustomPaint(
                       foregroundPainter: LinesPainter(
-                        objectIndex: widget.objectIndex,
-                        objectLenth: widget.objects.length,
+                        objectIndex: objectIndex,
+                        objectLenth: objects.length,
                       ),
                       child: SizedBox(
                         width: double.infinity,
@@ -169,11 +126,11 @@ class _GridViewObjectsDetailsPageState
                             ),
                           ),
                           child: Hero(
-                            tag: widget.tag,
+                            tag: tag,
                             child: Padding(
                               padding: EdgeInsets.all(50),
                               child: CachedNetworkImage(
-                               imageUrl: widget.path,
+                               imageUrl: path,
                               ),
                             ),
                           ),
@@ -188,7 +145,7 @@ class _GridViewObjectsDetailsPageState
                               TextStyle(fontSize: 40, fontFamily: sFontFamily),
                           children: [
                             TextSpan(
-                              text: widget.title.capitalize(),
+                              text: title.toUpperCase(),
                               style: TextStyle(
                                 color: HexColor('#A092DB'),
                               ),
@@ -226,34 +183,34 @@ class _GridViewObjectsDetailsPageState
                     fillColor: Colors.white,
                     onPressed: () {
                       StudyModel object =
-                          widget.objects[widget.objectIndex - 1];
-                      if (object == widget.objects.first) {
+                          objects[objectIndex - 1];
+                      if (object == objects.first) {
                         Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context) {
-                          return GridViewObjectsDetailsPage(
-                            path: widget.objects.last.image.toString(),
-                            tag: widget.objects.last.image.toString(),
-                            title: widget.objects.last.name
+                          return GriddetailsView(
+                            path: objects.last.image.toString(),
+                            tag: objects.last.image.toString(),
+                            title: objects.last.name
                                 .toString()
-                                .capitalize(),
-                            objects: widget.objects,
-                            objectIndex: widget.objects.length - 1,
+                                .toUpperCase(),
+                            objects: objects,
+                            objectIndex: objects.length - 1,
                             subtitle:
-                                widget.objects.last.description.toString(),
-                            audioPath: widget.objects.last.audio.toString(),
+                                objects.last.description.toString(),
+                            audioPath: objects.last.audio.toString(),
                           );
                         }));
                       } else {
                         Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context) {
-                          return GridViewObjectsDetailsPage(
+                          return GriddetailsView(
                             path: object.image.toString(),
                             tag: object.image.toString(),
-                            title: object.name.toString().capitalize(),
-                            objects: widget.objects,
-                            objectIndex: widget.objectIndex - 1,
+                            title: object.name.toString().toUpperCase(),
+                            objects: objects,
+                            objectIndex: objectIndex - 1,
                             subtitle:
-                                widget.objects.last.description.toString(),
+                              objects.last.description.toString(),
                             audioPath: object.audio.toString(),
                           );
                         }));
@@ -307,33 +264,33 @@ class _GridViewObjectsDetailsPageState
                     fillColor: Color(0xFF9f8fda),
                     onPressed: () {
                       StudyModel object =
-                          widget.objects[widget.objectIndex + 1];
-                      if (object == widget.objects.last) {
+                        objects[objectIndex + 1];
+                      if (object == objects.last) {
                         Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context) {
-                          return GridViewObjectsDetailsPage(
-                            path: widget.objects[0].image.toString(),
-                            tag: widget.objects[0].image.toString(),
+                          return GriddetailsView(
+                            path: objects[0].image.toString(),
+                            tag: objects[0].image.toString(),
                             title:
-                                widget.objects[0].name.toString().capitalize(),
-                            objects: widget.objects,
+                                objects[0].name.toString().toUpperCase(),
+                            objects: objects,
                             objectIndex: 0,
                             subtitle:
-                                widget.objects.last.description.toString(),
-                            audioPath: widget.objects[0].audio.toString(),
+                                objects.last.description.toString(),
+                            audioPath: objects[0].audio.toString(),
                           );
                         }));
                       } else {
                         Navigator.of(context).pushReplacement(
                             MaterialPageRoute(builder: (context) {
-                          return GridViewObjectsDetailsPage(
+                          return GriddetailsView(
                             path: object.image.toString(),
                             tag: object.image.toString(),
-                            title: object.name.toString().capitalize(),
-                            objects: widget.objects,
-                            objectIndex: widget.objectIndex + 1,
+                            title: object.name.toString().toUpperCase(),
+                            objects: objects,
+                            objectIndex: objectIndex + 1,
                             subtitle:
-                                widget.objects.last.description.toString(),
+                              objects.last.description.toString(),
                             audioPath: object.audio.toString(),
                           );
                         }));
@@ -372,12 +329,6 @@ class _GridViewObjectsDetailsPageState
   }
 }
 
-extension MyExtension on String {
-  String capitalize() {
-    return '${this[0].toUpperCase()}${this.substring(1).toLowerCase()}';
-  }
-}
-
 class LinesPainter extends CustomPainter {
   final int objectLenth;
   final int objectIndex;
@@ -412,3 +363,4 @@ class LinesPainter extends CustomPainter {
     return true;
   }
 }
+

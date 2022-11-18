@@ -9,6 +9,8 @@ abstract class Routes {
   static const SORBORNO = _Paths.SORBORNO;
   static const NUMBER = _Paths.NUMBER;
   static const GRID = _Paths.GRID;
+  static const POEM = _Paths.POEM;
+  static const CASESTUDY = _Paths.CASESTUDY;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const SORBORNO = '/sorborno';
   static const NUMBER = '/number';
   static const GRID = '/grid';
+  static const POEM = '/poem';
+  static const CASESTUDY = '/casestudy';
 }
