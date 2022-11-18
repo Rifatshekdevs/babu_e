@@ -1,19 +1,7 @@
-import 'package:agora_test/app/modules/banjonborno/views/banjonborno_view.dart';
-import 'package:agora_test/app/modules/gridplayground/views/grid_view.dart';
-import 'package:agora_test/app/modules/number/views/number_view.dart';
-import 'package:agora_test/src/animation/animating_bottom_to_up.dart';
-import 'package:agora_test/src/model/subcategory.dart';
-import 'package:agora_test/src/page/Kids_learning/flower_learning.dart';
-import 'package:agora_test/src/page/matching_quiz/matching_quiz.dart';
-import 'package:agora_test/src/page/playground/poem_playground.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../src/animation/my_animated_play_button.dart';
-import '../../../../src/animation/uber_animation.dart';
-import '../../../../src/page/drag_drop_quiz/drag_drop_quiz.dart';
 import '../../../../src/utils/constrants.dart';
-import '../../sorborno/views/sorborno_view.dart';
 import '../controllers/subcategory_controller.dart';
 
 class SubcategoryView extends GetView<SubcategoryController> {
@@ -120,91 +108,13 @@ class SubcategoryView extends GetView<SubcategoryController> {
                                     ),
                                   );
 
-                                  //     : subItem.layout == 'number'
-                                  //         ? NumberView(
-                                  //             id: subItem.sId
-                                  //                 .toString(),
-                                  //             subcategoryModel:
-                                  //                 SubcategoryModel(
-                                  //               sId: subItem.sId,
-                                  //               name: subItem.name,
-                                  //               frontImage: subItem
-                                  //                   .frontImage,
-                                  //               backImage:
-                                  //                   subItem.backImage,
-                                  //             ),
-                                  //           )
-                                  //         : subItem.layout == 'grid'
-                                  //             ? GridPlaygroundView(
-                                  //                 id: subItem.sId
-                                  //                     .toString(),
-                                  //                 subcategoryModel:
-                                  //                     SubcategoryModel(
-                                  //                   sId: subItem.sId,
-                                  //                   name:
-                                  //                       subItem.name,
-                                  //                   frontImage: subItem
-                                  //                       .frontImage,
-                                  //                   backImage: subItem
-                                  //                       .backImage,
-                                  //                 ),
-                                  //               )
-                                  //             : subItem.layout ==
-                                  //                     'caseStudy'
-                                  //                 ? FlowerLearning(
-                                  //                     id: subItem.sId
-                                  //                         .toString(),
-                                  //                     subcategoryModel:
-                                  //                         SubcategoryModel(
-                                  //                       sId: subItem
-                                  //                           .sId,
-                                  //                       name: subItem
-                                  //                           .name,
-                                  //                       frontImage:
-                                  //                           subItem
-                                  //                               .frontImage,
-                                  //                       backImage: subItem
-                                  //                           .backImage,
-                                  //                     ),
-                                  //                   )
-                                  //                 : subItem.layout ==
-                                  //                         'poem'
-                                  //                     ? PoemPlayground(
-                                  //                         id: subItem
-                                  //                             .sId
-                                  //                             .toString(),
-                                  //                         subcategoryModel:
-                                  //                             SubcategoryModel(
-                                  //                           sId: subItem
-                                  //                               .sId,
-                                  //                           name: subItem
-                                  //                               .name,
-                                  //                           frontImage:
-                                  //                               subItem
-                                  //                                   .frontImage,
-                                  //                           backImage:
-                                  //                               subItem
-                                  //                                   .backImage,
-                                  //                         ),
-                                  //                       )
                                   //                     : subItem.layout ==
                                   //                             'mcq'
                                   //                         ? DragDropQuiz()
                                   //                         : subItem.layout ==
                                   //                                 'quiz'
                                   //                             ? MatchingQuiz()
-                                  // : SorbornoView(
-                                  //     id: subItem.sId.toString(),
-                                  //     subcategoryModel:
-                                  //         SubcategoryModel(
-                                  //       sId: subItem.sId,
-                                  //       name: subItem.name,
-                                  //       frontImage: subItem.frontImage,
-                                  //       backImage: subItem.backImage,
-                                  //     ),
-                                  //   ),
-                                  // )
-                                }),
+                                   }),
                           ),
                         ),
                       ),

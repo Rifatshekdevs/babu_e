@@ -1,16 +1,13 @@
 import 'dart:convert';
-
 import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/api/local_cash_controller.dart';
 import 'package:agora_test/src/model/subcategory.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../src/api_caching/api_cache.dart';
 import '../../../../src/api/api_url.dart';
 import '../../../../src/utils/loader.dart';
-import '../../banjonborno/controllers/banjonborno_controller.dart';
 
 class SubcategoryController extends GetxController {
   GlobalKey<ScaffoldState> key = GlobalKey();
@@ -92,6 +89,22 @@ class SubcategoryController extends GetxController {
     }
     if (subItem.layout == 'consonant') {
       Get.toNamed(Routes.BANJONBORNO, arguments: [subItem]);
+      return;
+    }
+    if (subItem.layout == 'number') {
+      Get.toNamed(Routes.NUMBER, arguments: [subItem]);
+      return;
+    }
+    if (subItem.layout == 'grid') {
+      Get.toNamed(Routes.GRID, arguments: [subItem]);
+      return;
+    }
+    if (subItem.layout == 'poem') {
+      Get.toNamed(Routes.POEM, arguments: [subItem]);
+      return;
+    }
+    if (subItem.layout =='caseStudy') {
+      Get.toNamed(Routes.CASESTUDY, arguments: [subItem]);
       return;
     }
   }
