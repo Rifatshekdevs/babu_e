@@ -22,8 +22,8 @@ class SubcategoryController extends GetxController {
     mmm('onInit');
     mmm(arguments[0]);
     getSubCategory(arguments[0]);
-    getMcq();
-    getMcqAdvanced();
+    // getMcq();
+    // getMcqAdvanced();
     // Get.put(BanjonbornoController());
   }
 
@@ -51,36 +51,36 @@ class SubcategoryController extends GetxController {
     }
   }
 
-  getMcq() async {
-    var token = LocalStorage.getId();
+  // getMcq() async {
+  //   var token = LocalStorage.getId();
 
-    try {
-      final response = await _dio.get(ApiUrl.mcqCheck,
-          options: Options(headers: {
-            'content-type': 'application/json',
-            'authorization': 'Bearer $token',
-          }));
-      mmm(jsonEncode(response.data));
-      ApiCaching().saveToLocal(ApiUrl.mcqCheck, jsonEncode(response.data));
-    } catch (e) {
-      print(e);
-    }
-  }
+  //   try {
+  //     final response = await _dio.get(ApiUrl.mcqCheck,
+  //         options: Options(headers: {
+  //           'content-type': 'application/json',
+  //           'authorization': 'Bearer $token',
+  //         }));
+  //     mmm(jsonEncode(response.data));
+  //     ApiCaching().saveToLocal(ApiUrl.mcqCheck, jsonEncode(response.data));
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
-  getMcqAdvanced() async {
-    var token = LocalStorage.getId();
-    try {
-      final response = await _dio.get(ApiUrl.advanceMcq,
-          options: Options(headers: {
-            'content-type': 'application/json',
-            'authorization': 'Bearer $token',
-          }));
-      mmm(jsonEncode(response.data));
-      ApiCaching().saveToLocal(ApiUrl.advanceMcq, jsonEncode(response.data));
-    } catch (e) {
-      print(e);
-    }
-  }
+  // getMcqAdvanced() async {
+  //   var token = LocalStorage.getId();
+  //   try {
+  //     final response = await _dio.get(ApiUrl.advanceMcq,
+  //         options: Options(headers: {
+  //           'content-type': 'application/json',
+  //           'authorization': 'Bearer $token',
+  //         }));
+  //     mmm(jsonEncode(response.data));
+  //     ApiCaching().saveToLocal(ApiUrl.advanceMcq, jsonEncode(response.data));
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   void gotoPage(SubcategoryModel subItem) {
     if (subItem.layout == 'vowel') {

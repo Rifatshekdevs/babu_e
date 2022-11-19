@@ -1,7 +1,6 @@
 import 'package:agora_test/app/modules/gridplayground/views/griddetails_view.dart';
 import 'package:agora_test/src/config/constants.dart';
 import 'package:agora_test/src/config/ktext.dart';
-import 'package:agora_test/src/page/grid_view/grid_view_card.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -89,16 +88,12 @@ class GridPlaygroundView extends GetView<GridPlaygroundController> {
                                       spreadRadius: 4),
                                 ],
                               ),
-                              child: CircleAnimation(
-                                play: object.isSelected,
-                                size: size,
-                                child: ClipOval(
-                                  child: CachedNetworkImage(
-                                    imageUrl: object.image.toString(),
-                                    fit: BoxFit.contain,
-                                    height: respectiveHeight(size, 50),
-                                    width: respectiveWidth(size, 50),
-                                  ),
+                              child: ClipOval(
+                                child: CachedNetworkImage(
+                                  imageUrl: object.image.toString(),
+                                  fit: BoxFit.contain,
+                                  height: respectiveHeight(size, 50),
+                                  width: respectiveWidth(size, 50),
                                 ),
                               ),
                             ),

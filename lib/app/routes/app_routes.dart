@@ -11,6 +11,7 @@ abstract class Routes {
   static const GRID = _Paths.GRID;
   static const POEM = _Paths.POEM;
   static const CASESTUDY = _Paths.CASESTUDY;
+  static const QUIZ = _Paths.QUIZ;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const GRID = '/grid';
   static const POEM = '/poem';
   static const CASESTUDY = '/casestudy';
+  static const QUIZ = '/quiz';
 }

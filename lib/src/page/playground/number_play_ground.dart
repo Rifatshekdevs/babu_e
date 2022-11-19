@@ -26,18 +26,18 @@ class NumberButton extends StatelessWidget {
   }
 }
 
-class NumberAnimation extends StatefulWidget {
-  final Widget child;
-  const NumberAnimation({Key? key, required this.child}) : super(key: key);
+// class NumberAnimation extends StatefulWidget {
+//   final Widget child;
+//   const NumberAnimation({Key? key, required this.child}) : super(key: key);
 
-  @override
-  _NumberAnimationState createState() => _NumberAnimationState();
-}
+//   @override
+//   _NumberAnimationState createState() => _NumberAnimationState();
+// }
 
-class _NumberAnimationState extends State<NumberAnimation>
-    with SingleTickerProviderStateMixin {
-  @override
-  Widget build(BuildContext context) {
-    return widget.child;
-  }
-}
+// class _NumberAnimationState extends State<NumberAnimation>
+//     with SingleTickerProviderStateMixin {
+//   @override
+//   Widget build(BuildContext context) {
+//     return widget.child;
+//   }
+// }

@@ -1,6 +1,6 @@
 import 'package:agora_test/app/modules/poem/views/poemdetails_view.dart';
 import 'package:agora_test/src/config/ktext.dart';
-import 'package:agora_test/src/page/grid_view/poem_card_view.dart';
+// import 'package:agora_test/src/page/grid_view/poem_card_view.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class PoemView extends GetView<PoemController> {
   const PoemView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-        Size size = MediaQuery.of(context).size;
+        // Size size = MediaQuery.of(context).size;
 
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
@@ -77,15 +77,11 @@ class PoemView extends GetView<PoemController> {
                                         );
                                       }));
                                     },
-                                    child: PoemcircleAnimation(
-                                      play: object.isSelected,
-                                      size: size,
-                                      child: Center(
-                                        child: KText(
-                                          text: object.name.toString(),
-                                          fontSize: 20,
-                                          fontFamily: kFontFamily,
-                                        ),
+                                    child: Center(
+                                      child: KText(
+                                        text: object.name.toString(),
+                                        fontSize: 20,
+                                        fontFamily: kFontFamily,
                                       ),
                                     ),
                                   );

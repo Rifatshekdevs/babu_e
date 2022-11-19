@@ -1,5 +1,4 @@
 // ignore_for_file: invalid_use_of_protected_member
-import 'package:agora_test/src/animation/animating_bottom_to_up.dart';
 import 'package:agora_test/src/config/ktext.dart';
 import 'package:agora_test/src/page/playground/number_play_ground.dart';
 import 'package:agora_test/src/utils/constrants.dart';
@@ -57,22 +56,17 @@ class NumberView extends GetView<NumberController> {
                       child: Wrap(
                         children: [
                           ...controller.study3.map((num) {
-                            int index = controller.study3.indexOf(num);
-                            return AnimatingBottomToUp(
-                              index: index,
-                              child: NumberButton(
-                                width: width,
-                                onTap: () {
-                                  controller.presentWidget.value =
-                                      NumberAnimation(
-                                    child: CachedNetworkImage(
+                            // int index = controller.study3.indexOf(num);
+                            return NumberButton(
+                              width: width,
+                              onTap: () {
+                                controller.presentWidget.value =
+                                    CachedNetworkImage(
                                       imageUrl: num.image.toString(),
                                       width: 250,
-                                    ),
-                                  );
-                                },
-                                imagePath: num.image.toString(),
-                              ),
+                                    );
+                              },
+                              imagePath: num.image.toString(),
                             );
                           }).toList(),
                         ],
