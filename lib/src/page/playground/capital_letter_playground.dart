@@ -124,6 +124,7 @@
 //                     shadowColor: Colors.grey,
 //                   ),
 //                 ),
+                
 //               ),
 //             ],
 //           );
@@ -146,43 +147,43 @@
 //             height: comparativePexelInWidth(height) * 60,
 //           ),
 //         ),
-//         ...letter.examples.map((example) {
-//           return CapitalLetterAnimation(
-//             offsetBegin: Offset(-1, 0),
-//             index: example.index + 1,
-//             animate: animate,
-//             child: Row(
-//               children: [
-//                 SizedBox(
-//                   height: 10,
-//                 ),
-//                 Image.asset(
-//                   example.imagePath,
-//                   width: comparativePexelInWidth(width) * 60,
-//                 ),
-//                 SizedBox(
-//                   width: comparativePexelInWidth(width) * 10,
-//                 ),
-//                 Text(
-//                   " = ",
-//                   style: TextStyle(
-//                     fontSize: 20,
-//                     color: Colors.red,
-//                     fontFamily: "Knicknack",
-//                   ),
-//                 ),
-//                 Text(
-//                   example.name,
-//                   style: TextStyle(
-//                     fontSize: 30,
-//                     color: Colors.red,
-//                     fontFamily: "Knicknack",
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           );
-//         }).toList(),
+//         // ...letter.examples.map((example) {
+//         //   return CapitalLetterAnimation(
+//         //     offsetBegin: Offset(-1, 0),
+//         //     index: example.index + 1,
+//         //     animate: animate,
+//         //     child: Row(
+//         //       children: [
+//         //         SizedBox(
+//         //           height: 10,
+//         //         ),
+//         //         Image.asset(
+//         //           example.imagePath,
+//         //           width: comparativePexelInWidth(width) * 60,
+//         //         ),
+//         //         SizedBox(
+//         //           width: comparativePexelInWidth(width) * 10,
+//         //         ),
+//         //         Text(
+//         //           " = ",
+//         //           style: TextStyle(
+//         //             fontSize: 20,
+//         //             color: Colors.red,
+//         //             fontFamily: "Knicknack",
+//         //           ),
+//         //         ),
+//         //         Text(
+//         //           example.name,
+//         //           style: TextStyle(
+//         //             fontSize: 30,
+//         //             color: Colors.red,
+//         //             fontFamily: "Knicknack",
+//         //           ),
+//         //         ),
+//         //       ],
+//         //     ),
+//         //   );
+//         // }).toList(),
 //         FutureBuilder<Widget>(
 //             future: Future.delayed(
 //                 Duration(

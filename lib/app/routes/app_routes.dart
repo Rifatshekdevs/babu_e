@@ -12,6 +12,7 @@ abstract class Routes {
   static const POEM = _Paths.POEM;
   static const CASESTUDY = _Paths.CASESTUDY;
   static const QUIZ = _Paths.QUIZ;
+  static const CAPITALLATTER = _Paths.CAPITALLATTER;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const POEM = '/poem';
   static const CASESTUDY = '/casestudy';
   static const QUIZ = '/quiz';
+  static const CAPITALLATTER = '/capitallatter';
 }

@@ -1,6 +1,8 @@
 import 'package:agora_test/src/config/constants.dart';
+import 'package:agora_test/src/page/image_load.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
@@ -37,7 +39,9 @@ class CustomCard extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(rgPadding),
                       bottomLeft: Radius.circular(rgPadding)),
-                  color: color1),
+                  color: color1
+                  
+                  ),
               child: Stack(
                 children: [
                   Positioned(
@@ -70,19 +74,42 @@ class CustomCard extends StatelessWidget {
               ),
             ),
           ),
+          
           Container(
-            width: 130,
+             width: 130,
             height: 130,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 bottomLeft: Radius.circular(40),
               ),
-              child: CachedNetworkImage(
-                imageUrl: iconPath,
-                fit: BoxFit.cover,
-              ),
+              
+            child: CachedNetworkImage(
+              imageUrl: iconPath,
+              imageBuilder: (context, imageProvider) {
+                return Container(
+                  width: 130,
+                  height: 130,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      bottomLeft: Radius.circular(40),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: imageProvider,fit: BoxFit.cover)
+                  ),
+                );
+                
+              },
+              placeholder: (context, url) {
+                return Container(child: ImageLoad());
+              },
+              errorWidget: (context, url, error) {
+                return Image.asset(placeHolderImage);
+              },
             ),
+          )
           ),
         ],
       ),

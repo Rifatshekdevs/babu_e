@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:agora_test/src/api_caching/api_cache.dart';
 import 'package:agora_test/src/api/api_url.dart';
 import 'package:agora_test/src/model/category_model.dart';
@@ -11,18 +10,25 @@ import 'package:get/get.dart';
 import '../../../../src/utils/loader.dart';
 
 class CategoryController extends GetxController {
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    @override
+  void onInit() {
+    getCategory();
+    getPopularCategory();
+    super.onInit();
+  }
   final PageController sliderController = PageController(initialPage: 0);
   final _dio = Dio();
-  @override
-  void onInit() {
-    super.onInit();
-  getCategory();
-  getPopularCategory();
-  }
 
   final category = RxList<CategoryModel>();
   final popularC = RxList<PopularCategory>();
+
+  //   final page = RxInt(1);
+  // //per page data show number
+  // final perPage = RxInt(5);
+  //  final isEmpty = RxBool(true);
+  // final isLoading = RxBool(false);
+
+  final scrollController = ScrollController();
 
   getCategory() async {
     try {
@@ -85,4 +91,49 @@ class CategoryController extends GetxController {
     }
   }
 
+  //   loadMoreUserData() async {
+  //   try {
+  //     if (isEmpty.value == true) {
+  //       isLoading.value = true;
+  //       page.value++;
+  //       final response = await _dio
+  //           .get('https://admin.babue.me/category/pagination/?per_page=$perPage&page=${page.value}');
+
+  //       final List<CategoryModel> categoryData = response.data
+  //           .map((json) => CategoryModel.fromJson(json))
+  //           .toList()
+  //           .cast<CategoryModel>();
+  //       if (categoryData.length < 0) {
+  //         category.addAll(categoryData);
+  //         isLoading.value = false;
+  //         scrollController.animateTo(
+  //           scrollController.offset + 750,
+  //           duration: Duration(seconds: 1),
+  //           curve: Curves.easeInOut,
+  //         );
+  //       } else {
+  //         print('---No More Data---');
+  //         Get.defaultDialog(
+  //             title: 'Nothing',
+  //             content: KText(
+  //               text: 'There is no data',
+  //               color: Colors.black,
+  //             ));
+  //         isLoading.value = false;
+  //         isEmpty.value = false;
+  //       }
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //     // final snackbar = SnackBar(
+  //     //   backgroundColor: Colors.red,
+  //     //   content: KText(
+  //     //     text: e.toString(),
+  //     //     color: Colors.white,
+  //     //     maxLines: 5,
+  //     //   ),
+  //     // );
+  //     // return ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  //   }
+  // }
 }

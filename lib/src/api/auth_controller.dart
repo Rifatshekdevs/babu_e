@@ -63,7 +63,7 @@ class AuthController extends GetxController {
           Get.snackbar('Oops', errorMessage);
         }
 
-        log('catched');
+        log('6');
         return;
       }
       if (e.type == DioErrorType.connectTimeout) {

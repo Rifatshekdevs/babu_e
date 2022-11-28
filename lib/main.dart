@@ -1,3 +1,4 @@
+import 'package:agora_test/app/modules/category/controllers/category_controller.dart';
 import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/config/constants.dart';
 import 'package:agora_test/src/api/local_cash_controller.dart';
@@ -13,6 +14,9 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+  Get.put(CategoryController());
+
+  
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -22,8 +26,7 @@ void main() async {
       getPages: AppPages.routes,
     ),
   );
-  AndroidInitializationSettings androidInitializationSettings =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
+  AndroidInitializationSettings androidInitializationSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
   InitializationSettings initializationSettings = InitializationSettings(
       android: androidInitializationSettings,
       iOS: DarwinInitializationSettings());

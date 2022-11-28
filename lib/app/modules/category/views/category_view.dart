@@ -1,6 +1,5 @@
 import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/config/ktext.dart';
-import 'package:agora_test/src/api/slider_controller.dart';
 import 'package:agora_test/src/utils/constrants.dart';
 import 'package:agora_test/src/widget/custom_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -17,12 +16,10 @@ class CategoryView extends GetView<CategoryController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Obx(
-      () => controller.category.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : Scaffold(
+    return  Scaffold(
               backgroundColor: Colors.white,
-              body: SafeArea(
+              body: Obx(()=>controller.category.isEmpty
+          ? Center(child: CircularProgressIndicator()): SafeArea(
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: rgPadding, right: rgPadding, top: rgPadding),
@@ -53,45 +50,45 @@ class CategoryView extends GetView<CategoryController> {
                           ],
                         ),
                       ),
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: rgPadding),
-                          child: GetX<SliderController>(
-                            init: SliderController(),
-                            initState: (state) {
-                              state.controller?.getSlider();
-                            },
-                            builder: (controllerx) {
-                              return Container(
-                                height: 150,
-                                width: double.infinity,
-                                child: PageView.builder(
-                                    itemCount: controllerx.sliderList.length,
-                                    controller: controller.sliderController,
-                                    pageSnapping: true,
-                                    allowImplicitScrolling: true,
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
-                                      final item =
-                                          controllerx.sliderList[index];
-                                      return Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                                item.image.toString()),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      );
-                                    }),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
+                      // SliverToBoxAdapter(
+                      //   child: Padding(
+                      //     padding: EdgeInsets.only(top: rgPadding),
+                      //     child: GetX<SliderController>(
+                      //       init: SliderController(),
+                      //       initState: (state) {
+                      //         state.controller?.getSlider();
+                      //       },
+                      //       builder: (controllerx) {
+                      //         return Container(
+                      //           height: 150,
+                      //           width: double.infinity,
+                      //           child: PageView.builder(
+                      //               itemCount: controllerx.sliderList.length,
+                      //               controller: controller.sliderController,
+                      //               pageSnapping: true,
+                      //               allowImplicitScrolling: true,
+                      //               scrollDirection: Axis.horizontal,
+                      //               itemBuilder: (context, index) {
+                      //                 final item =
+                      //                     controllerx.sliderList[index];
+                      //                 return Container(
+                      //                   decoration: BoxDecoration(
+                      //                     color: Colors.grey,
+                      //                     borderRadius:
+                      //                         BorderRadius.circular(10),
+                      //                     image: DecorationImage(
+                      //                       image: NetworkImage(
+                      //                           item.image.toString()),
+                      //                       fit: BoxFit.cover,
+                      //                     ),
+                      //                   ),
+                      //                 );
+                      //               }),
+                      //         );
+                      //       },
+                      //     ),
+                      //   ),
+                      // ),
                       Obx(
                         () => controller.popularC.isEmpty
                             ? SliverToBoxAdapter(
@@ -179,7 +176,8 @@ class CategoryView extends GetView<CategoryController> {
                   ),
                 ),
               ),
-            ),
-    );
+              ),
+            );
+  
   }
 }

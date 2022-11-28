@@ -1,3 +1,4 @@
+import 'package:agora_test/app/modules/capitallatter/views/capitallatter_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class SubcategoryView extends GetView<SubcategoryController> {
             () => controller.subCategoryT.isEmpty
                 ? Center(child: CircularProgressIndicator())
                 : CustomScrollView(
+                  controller: controller.scrollController,
                     slivers: [
                       SliverToBoxAdapter(
                         child: Container(
@@ -60,7 +62,8 @@ class SubcategoryView extends GetView<SubcategoryController> {
                                       controller.subCategoryT[index];
                                   return GestureDetector(
                                     onTap: () {
-                                      controller.gotoPage(subItem);
+                                      // controller.gotoPage(subItem);
+                                      Get.to(CapitalLetterView(id: subItem.sId.toString(),));
                                     },
                                     child: Container(
                                       margin: EdgeInsets.all(10.0),

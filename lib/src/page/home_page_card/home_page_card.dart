@@ -1,6 +1,5 @@
 import 'package:agora_test/src/config/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class HomePageCard extends StatelessWidget {
   final Widget page;
@@ -38,7 +37,7 @@ class HomePageCard extends StatelessWidget {
             Container(
               height: 130,
               decoration: BoxDecoration(borderRadius: BorderRadius.only()),
-              child: SvgPicture.asset(
+              child: Image.asset(
                 frontSvgPath,
                 fit: BoxFit.fitWidth,
               ),

@@ -7,6 +7,8 @@ class SorbornoBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<SorbornoController>(
       () => SorbornoController(),
+    
     );
+  
   }
 }
