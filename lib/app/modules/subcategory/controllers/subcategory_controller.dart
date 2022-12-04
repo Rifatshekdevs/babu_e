@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:agora_test/app/modules/capitallatter/views/capitallatter_view.dart';
 import 'package:agora_test/app/routes/app_pages.dart';
 import 'package:agora_test/src/api/local_cash_controller.dart';
 import 'package:agora_test/src/config/ktext.dart';
@@ -174,9 +173,9 @@ class SubcategoryController extends GetxController {
       Get.toNamed(Routes.CASESTUDY, arguments: [subItem]);
       return;
     }
-    // if (subItem.layout =='alphabetic') {
-    //   Get.to(CapitalLetterPlayground());
-    //   return;
-    // }
+    if (subItem.layout =='alphabetic') {
+      Get.toNamed(Routes.CAPITALLATTER);
+      return;
+    }
   }
 }

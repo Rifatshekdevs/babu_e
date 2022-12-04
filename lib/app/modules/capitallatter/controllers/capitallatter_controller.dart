@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'package:agora_test/src/api_caching/api_cache.dart';
 import 'package:agora_test/src/api/api_url.dart';
@@ -20,9 +22,9 @@ class Latters {
     for (int i = 0; i <latterList.length; i++) {
       List<String> l = [];
 
-      l.add(latterList[i].image);
+      l.assign(latterList[i].image);
 
-      CapitalLetter ie = CapitalLetter(i, latterList[i]);
+      CapitalLetter ie = CapitalLetter(i,latterList[i]);
       ie.initialize();
       _capitalLatter.add(ie);
     }
@@ -41,7 +43,7 @@ class CapitalLetter {
   initialize() {
     List l = [];
     if (studyModel.image != null) {
-      l.add(studyModel.image);
+      l.assign(studyModel.image);
   }
 }
 }

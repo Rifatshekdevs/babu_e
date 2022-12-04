@@ -62,8 +62,8 @@ class SubcategoryView extends GetView<SubcategoryController> {
                                       controller.subCategoryT[index];
                                   return GestureDetector(
                                     onTap: () {
-                                      // controller.gotoPage(subItem);
-                                      Get.to(CapitalLetterView(id: subItem.sId.toString(),));
+                                      controller.gotoPage(subItem);
+                                      // Get.to(CapitalLetterView(id: subItem.sId.toString(),));
                                     },
                                     child: Container(
                                       margin: EdgeInsets.all(10.0),
